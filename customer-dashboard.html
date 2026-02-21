@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Dashboard -ALI ZENALABDIN SAHARI</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a href="#" class="navbar-brand">
+          <i class="fas fa-utensils me-2"></i> My Acount
+        </a>
+        <div class="navbar-nav">
+          <span class="navbar-text me-2">
+            <i class="fas fa-user me-2"></i> Customer</span
+          >
+          <button onclick="logout()" class="btn btn-outline-light">
+            Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 col-lg-2 bg-light sidebar">
+          <div class="position-sticky pt-2">
+            <div class="nav flex-column">
+              <div class="nav-item">
+                <a
+                  href="#"
+                  class="nav-link active"
+                  onclick="showSection('my-card')"
+                >
+                  <i class="fas fa-tachometer-alt me-1"></i> My Card
+                </a>
+              </div>
+              <div class="nav-item">
+                <a href="#" class="nav-link" onclick="showSection('my-orders')">
+                  <i class="fas fa-tachometer-alt me-1"></i> My Orders
+                </a>
+              </div>
+              <div class="nav-item">
+                <a href="#" class="nav-link" onclick="showSection('profile')">
+                  <i class="fas fa-tachometer-alt me-1"></i> Profile
+                </a>
+              </div>
+              <div class="nav-item">
+                <a href="./index.html" class="nav-link">
+                  <i class="fas fa-tachometer-alt me-1"></i> Back to website
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="pt-3 pb-2 border-buttom">
+            <h1>Dashboard</h1>
+          </div>
+          <!--------------------------------------- my card ------------------------------------ -->
+          <div id="my-card" class="dashboard-section">
+            <div class="card">
+              <h2 class="card-title card-body">Shipping Card</h2>
+              <div id="carItems" class="card-body">
+                <!-- cart items will be added here -->
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Order Summary</h5>
+                      <div class="d-flex justify-content-between">
+                        <span>Total Items</span>
+                        <span id="summary-total-items">0</span>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <span>Total Price</span>
+                        <span id="summary-total-price">0$</span>
+                      </div>
+                      <button class="btn btn-primary w-100" id="proceedCheckoutBtn">
+                        <i class="fas fa-shopping-cart me-1"></i> Checkout
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--------------------------------------- my orders ------------------------------------ -->
+          <div id="my-orders" class="dashboard-section" style="display: none">
+            <div class="card">
+              <h2>My Orders</h2>
+              <div class="card">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Order ID</th>
+                          <th>Order Date</th>
+                          <th>Items</th>
+                          <th>Total</th>
+                          <th>Order Status</th>
+
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="ordersItems">
+                        <tr>
+                          <td>1</td>
+                          <td>2021-01-01</td>
+                          <td>Pending</td>
+                          <td>100$</td>
+
+                          <td>Action</td>
+                          <td>
+                            <button class="btn btn-primary">View</button>
+                            <button class="btn btn-danger">Cancel</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--------------------------------------- profile ------------------------------------ -->
+          <div id="profile" class="dashboard-section" style="display: none">
+            <div class="card">
+              <h2>Profile</h2>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title">Personal Information</h5>
+                          <form action="">
+                            <div class="mb-3">
+                              <label for="name" class="form-label">Name</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                name="name"
+                              />
+                            </div>
+
+                            <div class="mb-3">
+                              <label for="email" class="form-label"
+                                >Email</label
+                              >
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                              />
+                            </div>
+
+                            <div class="mb-3">
+                              <label for="phone" class="form-label"
+                                >Phone</label
+                              >
+                              <input
+                                type="tel"
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                              />
+                            </div>
+                          </form>
+                          <button class="btn btn-primary">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--------------------------------------- profile ------------------------------------ -->
+        </main>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

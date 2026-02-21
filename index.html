@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALI ZENALABDIN SAHARI - Fine Dining Experience</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a href="./index.html" class="navbar-brand">
+          <i class="fas fa-utensils me-2"></i> ALI ZENALABDIN SAHARI
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="" class="nav-link">Menu</a></li>
+            <li class="nav-item"><a href="" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="d-flex">
+            <button class="btn btn-outline-light me-2" id="loginBtn">
+              <i class="fas fa-sign-in-alt me-1"></i>Login
+            </button>
+            <button class="btn btn-primary" id="registerBtn">
+              <i class="fas fa-user-plus me-1"></i>Register
+            </button>
+            <button class="btn btn-success" id="cartBtn">
+              <i class="fas fa-shopping-cart me-1"></i>Cart
+              <span
+                class="badge bg-danger ms-1"
+                id="cartBadge"
+                style="display: none"
+                >0</span
+              >
+            </button>
+            <button class="btn btn-info d-none" id="dashboardBtn">
+              <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+            </button>
+            <button class="btn btn-outline-light d-none" id="logoutBtn">
+              <i class="fas fa-sign-out-alt me-1"></i>Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-section">
+      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            class="active"
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="0"
+            type="button"
+          >
+            1
+          </button>
+          <button
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="1"
+            type="button"
+          >
+            2
+          </button>
+          <button
+            data-bs-target="#heroCarousel"
+            data-bs-slide-to="2"
+            type="button"
+          >
+            3
+          </button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div
+              class="hero-slide"
+              style="
+                background-image: url('https://essencedining.com/wp-content/uploads/2021/03/1.-Sky-Bar.jpg');
+              "
+            >
+              <div class="hero-content">
+                <h1 class="display-3 fw-bold text-white">Fresh Ingredients</h1>
+                <p class="lead text-white">
+                  Handpicked and locally sourced for the best taste
+                </p>
+                <a class="btn btn-primary btn-lg" href="">Explore Menu</a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="hero-slide"
+              style="
+                background-image: url('https://offloadmedia.feverup.com/parissecret.com/wp-content/uploads/2020/09/19140633/23358_c634bb4a2b3fab9d18ccffd8e64da9cf.jpg');
+              "
+            >
+              <div class="hero-content">
+                <h1 class="display-3 fw-bold text-white">Fresh Ingredients</h1>
+                <p class="lead text-white">
+                  Handpicked and locally sourced for the best taste
+                </p>
+                <a class="btn btn-primary btn-lg" href="">Explore Menu</a>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="hero-slide"
+              style="
+                background-image: url('https://www.cometoparis.com/data/layout_grouping/social_network/61057_vip-restaurant-web-2.1080w.jpg?ver=1684162588');
+              "
+            >
+              <div class="hero-content">
+                <h1 class="display-3 fw-bold text-white">Fresh Ingredients</h1>
+                <p class="lead text-white">
+                  Handpicked and locally sourced for the best taste
+                </p>
+                <a class="btn btn-primary btn-lg" href="">Explore Menu</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          data-bs-target="#heroCarousel"
+          data-bs-slide="prev"
+          type="button"
+          class="carousel-control-prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button
+          data-bs-target="#heroCarousel"
+          data-bs-slide="next"
+          type="button"
+          class="carousel-control-next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- mene Section -->
+    <section id="menu">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="display-4 fw-bold text-dark mb-5">Our Menu</h2>
+          <p class="lead text-muted">
+            Discover our delicious and authentic dishes
+          </p>
+          <button class="btn btn-outline-warning btn-sm mb-4">
+            <i class="fas fa-sync-alt me-1"></i> refresh Menu
+          </button>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="category-filters text-center mb-4">
+              <button
+                class="btn btn-outline-primary filter-btn active"
+                data-filter="all"
+              >
+                All
+              </button>
+              <button
+                class="btn btn-outline-primary filter-btn"
+                data-filter="appetizers"
+              >
+                appetizers
+              </button>
+              <button
+                class="btn btn-outline-primary filter-btn"
+                data-filter="main-dishes"
+              >
+                Main Dishes
+              </button>
+              <button
+                class="btn btn-outline-primary filter-btn"
+                data-filter="Pasta"
+              >
+                Pasta
+              </button>
+              <button
+                class="btn btn-outline-primary filter-btn"
+                data-filter="Pizza"
+              >
+                Pizza
+              </button>
+              <button
+                class="btn btn-outline-primary filter-btn"
+                data-filter="desserts"
+              >
+                Desserts
+              </button>
+              <button
+                class="btn btn-outline-primary filter-btn"
+                data-filter="drinks"
+              >
+                Drinks
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4" id="menu-container">
+           <!-- Menu items will be rendered here via script.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!--  about -->
+    <section id="about" class="py-5 bg-light">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h2 class="display-4 fw-bold text-dark mb-4">About Us</h2>
+            <p class="lead text-muted">
+              We are a team of dedicated professionals who are passionate about
+              providing the best possible dining experience for our customers.
+            </p>
+            <p class="lead text-muted">
+              We are a team of dedicated professionals who are passionate about
+              providing the best possible dining experience for our customers.
+            </p>
+
+            <div class="row">
+              <div class="col-4">
+                <div class="featuer-item">
+                  <i class="fas fa-leaf fa-2x text-success me-2"></i>
+                  <h5>Quality Food</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="featuer-item">
+                  <i class="fas fa-star fa-2x text-warning me-2"></i>
+                  <h5>Quality Food</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="featuer-item">
+                  <i class="fas fa-heart fa-2x text-danger me-2"></i>
+                  <h5>Quality Food</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <img
+              class="img-fluid rounded shadow-lg"
+              src="https://image.made-in-china.com/202f0j00bmkqASsrieoV/Restaurant-Furniture-Hotel-Sofa-Sets-Design-Restaurant-VIP-Lounge-Booth-Restaurant-Tables-and-Chairs-for-Sale-Philippines.webp"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- contact -->
+    <section id="contact" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-4 fw-bold text-dark mb-4">Contact Us</h2>
+          <p class="lead text-muted">
+            We are a team of dedicated professionals who are passionate about
+            providing the best possible dining experience for our customers.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="contact-info">
+              <h5>Visit Us</h5>
+              <p>
+                <i class="fas fa-map-marker-alt me-2"></i>123 Main St, Anytown,
+                USA
+              </p>
+              <p><i class="fas fa-phone me-2"></i><a href="tel:+97439941798">+97439941798</a></p>
+              <p><i class="fas fa-envelope me-2"></i>info@restaurant.com</p>
+              <h4>Opening Hours</h4>
+              <p>
+                <i class="fas fa-clock me-2"></i>Mon - Fri: 10:00 AM - 10:00 PM
+              </p>
+              <p>
+                <i class="fas fa-clock me-2"></i>Sat - Sun: 10:00 AM - 10:00 PM
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="contact-form">
+              <h5>Send Us a Message</h5>
+              <form action="">
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name=""
+                    id=""
+                    placeholder="Name"
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    class="form-control"
+                    type="email"
+                    name=""
+                    id=""
+                    placeholder="Email"
+                  />
+                </div>
+
+                <div class="mb-3">
+                  <textarea
+                    class="form-control"
+                    name=""
+                    rows="4"
+                    id=""
+                    placeholder="Message"
+                  ></textarea>
+                </div>
+                <button class="btn btn-primary">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+
+    <!-- footer -->
+    <footer class="py-5 bg-dark text-white text-center">
+      <div class="container">
+        <p>&copy; ALI ZENALABDIN SAHARI. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
