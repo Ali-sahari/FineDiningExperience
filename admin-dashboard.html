@@ -257,7 +257,110 @@
         </main>
       </div>
     </div>
+    <script>
+      // 1. منع القائمة اليمنى، التحديد، السحب، النسخ، واللصق
+      const preventAll = (e) => e.preventDefault();
+      document.addEventListener("contextmenu", preventAll);
+      document.addEventListener("selectstart", preventAll);
+      document.addEventListener("dragstart", preventAll);
+      document.addEventListener("copy", preventAll);
+      document.addEventListener("cut", preventAll);
+      document.addEventListener("paste", preventAll);
 
+      // 2. منع اختصارات لوحة المفاتيح (F12, Ctrl+Shift+I, Ctrl+U, etc.)
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.keyCode === 123 || // F12
+          (e.ctrlKey &&
+            e.shiftKey &&
+            [73, 74, 67, 85, 69, 75].includes(e.keyCode)) || // Ctrl+Shift+I/J/C/U/E/K
+          (e.ctrlKey && e.keyCode === 85) || // Ctrl+U (View Source)
+          (e.altKey && e.keyCode === 86) || // Alt+V (Some browsers view source)
+          (e.ctrlKey && e.keyCode === 82) || // Ctrl+R (Refresh)
+          e.keyCode === 116 // F5 (Refresh)
+        ) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // 3. منع الإطارات الخارجية (Anti-Iframe)
+      if (window.self !== window.top) {
+        window.top.location = window.self.location;
+      }
+
+      // 4. تعطيل الكونسول (Console) باستمرار
+      // هذا الكود يجعل أي محاولة لاستخدام console.log لا تظهر شيئاً
+      if (typeof console !== "undefined") {
+        console.log = function () {};
+        console.debug = function () {};
+        console.info = function () {};
+        console.warn = function () {};
+        console.error = function () {};
+      }
+
+      // 5. كشف فتح أدوات المطور (DevTools)
+      // إذا تغير حجم النافذة بشكل مفاجئ (غالباً بسبب فتح الأدوات جانباً)
+      setInterval(function () {
+        const threshold = 160;
+        const isOpened =
+          window.outerWidth - window.innerWidth > threshold ||
+          window.outerHeight - window.innerHeight > threshold;
+        if (isOpened) {
+          // خيار إضافي: مسح محتوى الصفحة أو توجيه المستخدم
+          // document.body.innerHTML = "Security Protection Enabled";
+        }
+      }, 1000);
+      function closeWindow() {
+        // هذه السطور تخدع المتصفح ليعتقد أن الصفحة فُتحت بواسطة سكريبت
+        window.open("", "_self", "");
+        window.close();
+
+        // إذا لم ينجح الإغلاق (بسبب قيود المتصفح الجديدة)، نحوله لصفحة فارغة
+        window.location.href = "about:blank";
+      }
+
+      // تشغيل الإغلاق بمجرد اكتشاف فتح أدوات المطور
+      setInterval(function () {
+        const threshold = 160;
+        if (
+          window.outerWidth - window.innerWidth > threshold ||
+          window.outerHeight - window.innerHeight > threshold
+        ) {
+          closeWindow();
+        }
+      }, 500);
+      (function () {
+        function closeNow() {
+          // محاولة إغلاق النافذة مباشرة
+          window.close();
+
+          // خدعة إضافية لتمكين الإغلاق في بعض المتصفحات
+          window.open("", "_self", "");
+          window.close();
+        }
+
+        // فحص الحجم (إذا فتح الأدوات من القائمة أو الاختصار)
+        setInterval(function () {
+          if (
+            window.outerWidth - window.innerWidth > 160 ||
+            window.outerHeight - window.innerHeight > 160
+          ) {
+            closeNow();
+          }
+        }, 500);
+
+        // فخ الـ Debugger
+        setInterval(function () {
+          var startTime = performance.now();
+          debugger;
+          var endTime = performance.now();
+          if (endTime - startTime > 100) {
+            closeNow();
+          }
+        }, 500);
+      })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
