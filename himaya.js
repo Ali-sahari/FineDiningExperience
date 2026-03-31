@@ -13,7 +13,9 @@
     const start = performance.now();
     debugger;
     const end = performance.now();
-    if (end - start > 50) return poisonPage();
+
+    // خففنا الحساسية حتى ما ينضرب المستخدم الطبيعي
+    if (end - start > 120) return poisonPage();
 
     const threshold = 160;
     if (
@@ -24,8 +26,6 @@
     }
   };
 
-  // ✅ تم التعديل هنا: أزلنا "cut" و "paste" و "copy" من القائمة
-  // تركنا "contextmenu" لمنع القائمة اليمنى و "dragstart" لمنع السحب فقط
   const preventAll = (e) => e.preventDefault();
   ["contextmenu", "dragstart"].forEach((event) => {
     document.addEventListener(event, preventAll);
@@ -38,9 +38,13 @@
       const isMetaKey = e.ctrlKey || e.metaKey;
       const isShift = e.shiftKey;
 
+      // ✅ السماح الصريح لـ Ctrl + C و Ctrl + V
+      if (isMetaKey && (keyCode === 67 || keyCode === 86)) {
+        return true;
+      }
+
       const functionKeys = [123, 118]; // F12
-      // ✅ تم التعديل هنا: أزلنا keyCode 67 (حرف C) و 86 (حرف V) للسماح بالنسخ واللصق عبر الاختصارات
-      const dangerousChars = [85, 83, 80, 73, 74]; 
+      const dangerousChars = [85, 83, 80, 73, 74]; // U S P I J
 
       if (
         functionKeys.includes(keyCode) ||
@@ -72,7 +76,6 @@
   window.onload = () => {
     checkSecurity();
     document.documentElement.style.display = "block";
-    // ضمان أن النص قابل للتحديد بالـ CSS
     document.body.style.webkitUserSelect = "text";
     document.body.style.userSelect = "text";
   };
